@@ -313,7 +313,8 @@ public final class JoltItems extends JavaPlugin implements Listener
     	Player p = e7.getPlayer();
         if (feet.getType() == Material.DIAMOND_BOOTS) 
         {
-        	if(feet.hasItemMeta() && 
+        	
+			if(feet.hasItemMeta() && 
             feet.getItemMeta().hasDisplayName() && 
             feet.getItemMeta().getDisplayName().equals(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Swifts")) 
             {
