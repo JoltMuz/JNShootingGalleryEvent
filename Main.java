@@ -214,12 +214,12 @@ public final class JoltItems extends JavaPlugin implements Listener
             if (p.getItemInHand().getType() == Material.STICK) 
             {
                 if(item.hasItemMeta() && 
-                        item.getItemMeta().hasDisplayName() && 
-                        item.getItemMeta().getDisplayName().equals(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Lightning Wand")) 
-                        {
-                            p.sendMessage(ChatColor.AQUA + "Ability Used!");
-                            p.getWorld().strikeLightning(p.getTargetBlock((Set<Material>) null, 200).getLocation());
-                        }
+                item.getItemMeta().hasDisplayName() && 
+                item.getItemMeta().getDisplayName().equals(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Lightning Wand")) 
+                {
+                    p.sendMessage(ChatColor.AQUA + "Ability Used!");
+                    p.getWorld().strikeLightning(p.getTargetBlock((Set<Material>) null, 200).getLocation());
+                }
             }
         }
     }        
@@ -238,12 +238,12 @@ public final class JoltItems extends JavaPlugin implements Listener
             if (p.getItemInHand().getType() == Material.STICK) 
             {
                 if(item.hasItemMeta() && 
-                        item.getItemMeta().hasDisplayName() && 
-                        item.getItemMeta().getDisplayName().equals(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Lightning Wand")) 
-                        {
-                            p.sendMessage(ChatColor.AQUA + "Ability Used!");
-                            p.getWorld().strikeLightning(p.getTargetBlock((Set<Material>) null, 10).getLocation());
-                        }
+                item.getItemMeta().hasDisplayName() && 
+                item.getItemMeta().getDisplayName().equals(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Lightning Wand")) 
+                {
+                    p.sendMessage(ChatColor.AQUA + "Ability Used!");
+                    p.getWorld().strikeLightning(p.getTargetBlock((Set<Material>) null, 10).getLocation());
+                }
             }
         }
     }
@@ -262,13 +262,13 @@ public final class JoltItems extends JavaPlugin implements Listener
             if (item2.getType() == Material.BLAZE_ROD) 
             {
                 if(item2.hasItemMeta() && 
-                        item2.getItemMeta().hasDisplayName() && 
-                        item2.getItemMeta().getDisplayName().equals(ChatColor.GREEN.toString() + ChatColor.BOLD.toString() + "Pogo Stick")) 
-                        {
-                            p.sendMessage(ChatColor.BLUE + "Ability Used!");
-                            p.setVelocity(new Vector(0, 5, 0));
+                item2.getItemMeta().hasDisplayName() && 
+                item2.getItemMeta().getDisplayName().equals(ChatColor.GREEN.toString() + ChatColor.BOLD.toString() + "Pogo Stick")) 
+                {
+                    p.sendMessage(ChatColor.BLUE + "Ability Used!");
+                    p.setVelocity(new Vector(0, 5, 0));
 
-                        }
+                }
             }
         }
     }
@@ -314,15 +314,15 @@ public final class JoltItems extends JavaPlugin implements Listener
         if (feet.getType() == Material.DIAMOND_BOOTS) 
         {
         	if(feet.hasItemMeta() && 
-                feet.getItemMeta().hasDisplayName() && 
-                feet.getItemMeta().getDisplayName().equals(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Swifts")) 
-                    {
-                        p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
-                        Location loca = p.getLocation();
-                        Vector vector = p.getLocation().getDirection().multiply(-1);
-                        Location loca2 = loca.add(vector);
-                        p.getWorld().playEffect(loca2, Effect.SMOKE, null);
-                    }
+            feet.getItemMeta().hasDisplayName() && 
+            feet.getItemMeta().getDisplayName().equals(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Swifts")) 
+            {
+                p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 2));
+                Location loca = p.getLocation();
+                Vector vector = p.getLocation().getDirection().multiply(-1);
+                Location loca2 = loca.add(vector);
+                p.getWorld().playEffect(loca2, Effect.SMOKE, null);
+            }
         }
     }
 
