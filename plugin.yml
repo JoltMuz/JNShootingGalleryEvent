@@ -5,18 +5,6 @@ main: io.github.JoltMuz.joltitems.Main
 api-version: Spigot-1.8.8-R0.1-SNAPSHOT-latest
 
 commands:
-  incinerator:
-    description: Gives the Incinerator weapon.
-    usage: /incinerator
-    
-  wand:
-    description: Gives the Lightning wand weapon.
-    usage: /wand
-    
-  pogo:
-    description: Gives the Pogo stick.
-    usage: /pogo
-    
-  swifts:
-    description: Gives the swift boots.
-    usage: /swifts
+  joltitems:
+    description: All JoltItems.
+    usage: /joltitems
