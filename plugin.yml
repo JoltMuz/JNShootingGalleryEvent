@@ -10,13 +10,13 @@ commands:
     usage: /incinerator
     
   wand:
-    description: Gives the Incinerator weapon.
+    description: Gives the Lightning wand weapon.
     usage: /wand
     
   pogo:
-    description: Gives the Incinerator weapon.
+    description: Gives the Pogo stick.
     usage: /pogo
     
   swifts:
-    description: Gives the Incinerator weapon.
+    description: Gives the swift boots.
     usage: /swifts
