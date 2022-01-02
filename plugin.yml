@@ -1,0 +1,22 @@
+name: JoltItems
+version: 1.0
+author: JoltTheBolt
+main: io.github.JoltMuz.joltitems.Main
+api-version: Spigot-1.8.8-R0.1-SNAPSHOT-latest
+
+commands:
+  incinerator:
+    description: Gives the Incinerator weapon.
+    usage: /incinerator
+    
+  wand:
+    description: Gives the Incinerator weapon.
+    usage: /wand
+    
+  pogo:
+    description: Gives the Incinerator weapon.
+    usage: /pogo
+    
+  swifts:
+    description: Gives the Incinerator weapon.
+    usage: /swifts
