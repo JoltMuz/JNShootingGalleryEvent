@@ -23,6 +23,7 @@ public class UI implements CommandExecutor, Listener
     public static ItemStack Wand;
     public static ItemStack Pogo;
     public static ItemStack Swifts;
+    public static ItemStack Jetpack;
     static
     {
         Incinerator = new ItemStack(Material.DIAMOND_SWORD);
@@ -65,10 +66,21 @@ public class UI implements CommandExecutor, Listener
         swiftsMeta.setLore(swiftsLore);
         Swifts.setItemMeta(swiftsMeta);
 
+        Jetpack = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemMeta jetpackMeta = Swifts.getItemMeta();
+        jetpackMeta.setDisplayName(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack");
+        ArrayList<String> jetpackLore = new ArrayList<>();
+        jetpackLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Flight");
+        jetpackLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Sneak: " + ChatColor.WHITE + "Recharge");
+        jetpackLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Double-Jump: " + ChatColor.WHITE + "Flyyyy!");
+        jetpackMeta.setLore(jetpackLore);
+        Jetpack.setItemMeta(jetpackMeta);
+
         joltItems.setItem(2, Incinerator);
         joltItems.setItem(3, Wand);
         joltItems.setItem(4, Pogo);
         joltItems.setItem(5, Swifts);
+        joltItems.setItem(6, Jetpack);
     }
     @Override
     public boolean onCommand(CommandSender Sender, Command command, String s, String[] strings)
@@ -104,6 +116,10 @@ public class UI implements CommandExecutor, Listener
             if (clicked.getItemMeta().getDisplayName().equals(ChatColor.RED + ChatColor.BOLD.toString() + "Swifts"))
             {
                 player.getInventory().addItem(Swifts);
+            }
+            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack"))
+            {
+                player.getInventory().addItem(Jetpack);
             }
         }
     }
