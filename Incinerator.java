@@ -12,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 public class Incinerator implements Listener
@@ -27,12 +26,7 @@ public class Incinerator implements Listener
 
             Player p = e.getPlayer();
             World w = p.getWorld();
-            ItemStack item = p.getInventory().getItemInHand();
-            if(item != null && item.getType() == Material.DIAMOND_SWORD)
-            {
-                if(item.hasItemMeta() &&
-                        item.getItemMeta().hasDisplayName() &&
-                        item.getItemMeta().getDisplayName().equals(ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator"))
+            if(CheckItem.CheckItem(e.getPlayer().getItemInHand(), Material.DIAMOND_SWORD, ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator"))
                 {
                     Location loc = p.getLocation();
                     Vector v1 = loc.getDirection().multiply(1);
@@ -90,5 +84,5 @@ public class Incinerator implements Listener
                 }
             }
         }
-    }
+
 }
