@@ -18,12 +18,17 @@ import java.util.ArrayList;
 
 public class UI implements CommandExecutor, Listener
 {
-    public static Inventory joltItems = Bukkit.createInventory(null, 9, ChatColor.DARK_RED + "J" + ChatColor.RED + "o" + ChatColor.GOLD + "l" + ChatColor.YELLOW + "t" + ChatColor.GREEN + "I" + ChatColor.AQUA + "t" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "m" + ChatColor.DARK_PURPLE + "s");
+    public static Inventory joltItems = Bukkit.createInventory(null, 27, ChatColor.DARK_RED + "J" + ChatColor.RED + "o" + ChatColor.GOLD + "l" + ChatColor.YELLOW + "t" + ChatColor.GREEN + "I" + ChatColor.AQUA + "t" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "m" + ChatColor.DARK_PURPLE + "s");
     public static ItemStack Incinerator;
     public static ItemStack Wand;
     public static ItemStack Pogo;
     public static ItemStack Swifts;
     public static ItemStack Jetpack;
+    public static ItemStack Railgun;
+    public static ItemStack YonduFin;
+    public static ItemStack Bustercall;
+    public static ItemStack BridgeEgg;
+    public static ItemStack GrapplingHook;
     static
     {
         Incinerator = new ItemStack(Material.DIAMOND_SWORD);
@@ -31,7 +36,8 @@ public class UI implements CommandExecutor, Listener
         IncineratorMeta.setDisplayName(ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator");
         ArrayList<String> incineratorLore = new ArrayList<>();
         incineratorLore.add(ChatColor.DARK_AQUA+ ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Incineration");
-        incineratorLore.add(ChatColor.WHITE + "Burns everything " + ChatColor.DARK_GREEN + "5 blocks ");
+        incineratorLore.add("");
+        incineratorLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Burns " + ChatColor.DARK_GREEN + "5 blocks ");
         incineratorLore.add(ChatColor.WHITE + "ahead of you");
         IncineratorMeta.setLore(incineratorLore);
         Incinerator.setItemMeta(IncineratorMeta);
@@ -41,8 +47,9 @@ public class UI implements CommandExecutor, Listener
         wandMeta.setDisplayName(ChatColor.AQUA + ChatColor.BOLD.toString() + "Lightning Wand");
         ArrayList<String> wandLore = new ArrayList<>();
         wandLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Thunder Bolt");
-        wandLore.add(ChatColor.WHITE + "Summons a " + ChatColor.LIGHT_PURPLE + "Lightning Bolt ");
-        wandLore.add(ChatColor.WHITE + "where you aim");
+        wandLore.add("");
+        wandLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Summons a " + ChatColor.LIGHT_PURPLE + "Lightning ");
+        wandLore.add(ChatColor.LIGHT_PURPLE + "Bolt " + ChatColor.WHITE + "where you aim");
         wandMeta.setLore(wandLore);
         Wand.setItemMeta(wandMeta);
 
@@ -50,7 +57,8 @@ public class UI implements CommandExecutor, Listener
         ItemMeta pogoMeta = Pogo.getItemMeta();
         pogoMeta.setDisplayName(ChatColor.GREEN + ChatColor.BOLD.toString() + "Pogo Stick");
         ArrayList<String> pogoLore = new ArrayList<>();
-        pogoLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Launch");
+        pogoLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Woosh!");
+        pogoLore.add("");
         pogoLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Up!");
         pogoLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Left-Click: " + ChatColor.WHITE + "In looking direction");
         pogoMeta.setLore(pogoLore);
@@ -61,26 +69,88 @@ public class UI implements CommandExecutor, Listener
         swiftsMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString() + "Swifts");
         ArrayList<String> swiftsLore = new ArrayList<>();
         swiftsLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Sonic");
+        swiftsLore.add("");
         swiftsLore.add(ChatColor.WHITE + "Makes you " + ChatColor.DARK_GREEN + " quick" + ChatColor.WHITE + " and");
         swiftsLore.add(ChatColor.WHITE+ "leaves a tiny trail");
         swiftsMeta.setLore(swiftsLore);
         Swifts.setItemMeta(swiftsMeta);
 
         Jetpack = new ItemStack(Material.DIAMOND_CHESTPLATE);
-        ItemMeta jetpackMeta = Swifts.getItemMeta();
+        ItemMeta jetpackMeta = Jetpack.getItemMeta();
         jetpackMeta.setDisplayName(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack");
         ArrayList<String> jetpackLore = new ArrayList<>();
-        jetpackLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Flight");
+        jetpackLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Yeet");
+        jetpackLore.add("");
         jetpackLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Sneak: " + ChatColor.WHITE + "Recharge");
         jetpackLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Double-Jump: " + ChatColor.WHITE + "Flyyyy!");
         jetpackMeta.setLore(jetpackLore);
         Jetpack.setItemMeta(jetpackMeta);
 
-        joltItems.setItem(2, Incinerator);
-        joltItems.setItem(3, Wand);
-        joltItems.setItem(4, Pogo);
-        joltItems.setItem(5, Swifts);
-        joltItems.setItem(6, Jetpack);
+        Railgun = new ItemStack(Material.GOLD_HOE);
+        ItemMeta RailgunMeta = Railgun.getItemMeta();
+        RailgunMeta.setDisplayName(ChatColor.DARK_RED + ChatColor.BOLD.toString() + "Railgun");
+        ArrayList<String> RailgunLore = new ArrayList<>();
+        RailgunLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Shoooot");
+        RailgunLore.add("");
+        RailgunLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Shoot");
+        RailgunLore.add(ChatColor.WHITE + "a line of" + ChatColor.DARK_RED + " Laser");
+        RailgunMeta.setLore(RailgunLore);
+        Railgun.setItemMeta(RailgunMeta);
+
+        YonduFin = new ItemStack(Material.ARROW);
+        ItemMeta FinMeta = YonduFin.getItemMeta();
+        FinMeta.setDisplayName(ChatColor.RED + ChatColor.BOLD.toString() + "Yondu's Fin");
+        ArrayList<String> FinLore = new ArrayList<>();
+        FinLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Telekinesis");
+        FinLore.add("");
+        FinLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Shoot a");
+        FinLore.add(ChatColor.WHITE + "controllable" + ChatColor.DARK_RED + " Arrow");
+        FinMeta.setLore(FinLore);
+        YonduFin.setItemMeta(FinMeta);
+
+        Bustercall = new ItemStack(Material.FIREBALL);
+        ItemMeta Bustercallmeta = Bustercall.getItemMeta();
+        Bustercallmeta.setDisplayName(ChatColor.GOLD + ChatColor.BOLD.toString() + "Buster Call");
+        ArrayList<String> BustercallLore = new ArrayList<>();
+        BustercallLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Island Destroyer");
+        BustercallLore.add("");
+        BustercallLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Launch a");
+        BustercallLore.add(ChatColor.WHITE + "nuclear" + ChatColor.DARK_RED + " Fireball");
+        Bustercallmeta.setLore(BustercallLore);
+        Bustercall.setItemMeta(Bustercallmeta);
+
+        BridgeEgg = new ItemStack(Material.EGG);
+        ItemMeta BridgeEggMeta = BridgeEgg.getItemMeta();
+        BridgeEggMeta.setDisplayName(ChatColor.GREEN + ChatColor.BOLD.toString() + "Bridge Egg");
+        ArrayList<String> BridgeEggLore = new ArrayList<>();
+        BridgeEggLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Instant Bridge");
+        BridgeEggLore.add("");
+        BridgeEggLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Launch a");
+        BridgeEggLore.add(ChatColor.WHITE + "egg making a" + ChatColor.DARK_GREEN + " Bridge");
+        BridgeEggMeta.setLore(BridgeEggLore);
+        BridgeEgg.setItemMeta(BridgeEggMeta);
+
+        GrapplingHook = new ItemStack(Material.FISHING_ROD);
+        ItemMeta GrapplingHookMeta = GrapplingHook.getItemMeta();
+        GrapplingHookMeta.setDisplayName(ChatColor.GREEN + ChatColor.BOLD.toString() + "Grappling Hook");
+        ArrayList<String> GrapplingHookLore = new ArrayList<>();
+        GrapplingHookLore.add(ChatColor.DARK_AQUA + ChatColor.BOLD.toString() + "Item Ability: " + ChatColor.AQUA + "Grapple n Climb ");
+        GrapplingHookLore.add("");
+        GrapplingHookLore.add(ChatColor.GREEN + ChatColor.BOLD.toString() + "Right-Click: " + ChatColor.WHITE + "Launch a sticky");
+        GrapplingHookLore.add(ChatColor.WHITE + "hook and br " + ChatColor.DARK_RED + "Spider"+ ChatColor.DARK_BLUE +"man");
+        GrapplingHookMeta.setLore(GrapplingHookLore);
+        GrapplingHook.setItemMeta(GrapplingHookMeta);
+
+        joltItems.setItem(0, Incinerator);
+        joltItems.setItem(1, Wand);
+        joltItems.setItem(2, Pogo);
+        joltItems.setItem(3, Swifts);
+        joltItems.setItem(4, Jetpack);
+        joltItems.setItem(5, Railgun);
+        joltItems.setItem(6, YonduFin);
+        joltItems.setItem(7, Bustercall);
+        joltItems.setItem(8, BridgeEgg);
+        joltItems.setItem(9,GrapplingHook);
     }
     @Override
     public boolean onCommand(CommandSender Sender, Command command, String s, String[] strings)
@@ -101,25 +171,39 @@ public class UI implements CommandExecutor, Listener
         Inventory inventory = event.getInventory();
         if (inventory.getName().equals(joltItems.getName())) {
             event.setCancelled(true);
-            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator"))
+            if (clicked.hasItemMeta())
             {
-                player.getInventory().addItem(Incinerator);
-            }
-            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.AQUA + ChatColor.BOLD.toString() + "Lightning Wand"))
-            {
-                player.getInventory().addItem(Wand);
-            }
-            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GREEN + ChatColor.BOLD.toString() + "Pogo Stick"))
-            {
-                player.getInventory().addItem(Pogo);
-            }
-            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.RED + ChatColor.BOLD.toString() + "Swifts"))
-            {
-                player.getInventory().addItem(Swifts);
-            }
-            if (clicked.getItemMeta().getDisplayName().equals(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack"))
-            {
-                player.getInventory().addItem(Jetpack);
+
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator")) {
+                    player.getInventory().addItem(Incinerator);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.AQUA + ChatColor.BOLD.toString() + "Lightning Wand")) {
+                    player.getInventory().addItem(Wand);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GREEN + ChatColor.BOLD.toString() + "Pogo Stick")) {
+                    player.getInventory().addItem(Pogo);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.RED + ChatColor.BOLD.toString() + "Swifts")) {
+                    player.getInventory().addItem(Swifts);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack")) {
+                    player.getInventory().addItem(Jetpack);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.DARK_RED + ChatColor.BOLD.toString() + "Railgun")) {
+                    player.getInventory().addItem(Railgun);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.RED + ChatColor.BOLD.toString() + "Yondu's Fin")) {
+                    player.getInventory().addItem(YonduFin);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GOLD + ChatColor.BOLD.toString() + "Buster Call")) {
+                    player.getInventory().addItem(Bustercall);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GREEN + ChatColor.BOLD.toString() + "Bridge Egg")) {
+                    player.getInventory().addItem(BridgeEgg);
+                }
+                if (clicked.getItemMeta().getDisplayName().equals(ChatColor.GREEN + ChatColor.BOLD.toString() + "Grappling Hook")) {
+                    player.getInventory().addItem(GrapplingHook);
+                }
             }
         }
     }
