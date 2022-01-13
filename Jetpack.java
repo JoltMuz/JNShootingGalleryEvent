@@ -12,7 +12,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -20,26 +19,24 @@ import java.util.HashMap;
 
 public class Jetpack implements Listener
 {
-    int fuel;
     HashMap<String, Integer> Fuels = new HashMap<>();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e)
     {
-        Fuels.put(e.getPlayer().getDisplayName(),0);
+        Fuels.put(e.getPlayer().getName(),0);
 
     }
     @EventHandler
-    public void Move(PlayerMoveEvent e)
+    public void Recharge(PlayerMoveEvent e)
     {
 
         Player p = e.getPlayer();
 
         if (p.getGameMode() == GameMode.SURVIVAL){
-            if (p.getInventory().getChestplate() != null)
+            if (CheckItem.CheckItem(p.getInventory().getChestplate(), Material.DIAMOND_CHESTPLATE, ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack"))
             {
-                if (p.getInventory().getChestplate().getItemMeta().getDisplayName().equals(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack"))
-                {
+
                     new BukkitRunnable()
                     {
                         @Override
@@ -51,20 +48,22 @@ public class Jetpack implements Listener
                                     if (p.isSneaking())
                                     {
 
-                                        if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) < 100)
+                                        if (Fuels.containsKey(e.getPlayer().getName()) && Fuels.get(e.getPlayer().getName()) < 100)
                                         {
-                                            Fuels.put((e.getPlayer().getDisplayName()),Fuels.get(e.getPlayer().getDisplayName()) + 1);
+                                            Fuels.put((e.getPlayer().getName()),Fuels.get(e.getPlayer().getName()) + 1);
                                             new ActionBar(ChatColor.YELLOW + ChatColor.BOLD.toString() + new String(new char[Fuels.get(e.getPlayer().getDisplayName()) / 5]).replace("\0", "▇")).sendToPlayer(p);
                                         }
-                                        if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) == 100)
+                                        if (Fuels.containsKey(e.getPlayer().getName()) && Fuels.get(e.getPlayer().getName()) == 100)
                                         {
                                             new ActionBar(ChatColor.GOLD + ChatColor.BOLD.toString() + "Fuel Fully Recharged!").sendToPlayer(p);
                                             this.cancel();
                                         }
                                     }
-                                    if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) == 0)
+
+                                    if (Fuels.containsKey(e.getPlayer().getName()) && (Fuels.get(e.getPlayer().getName())) == 0)
                                     {
-                                        p.setFlying(false);
+                                        if (p.isFlying())
+                                            {p.setFlying(false);}
                                         p.setAllowFlight(false);
                                         new ActionBar(ChatColor.DARK_GRAY + ChatColor.BOLD.toString() + "Sneak to Recharge Fuel").sendToPlayer(p);
                                     }
@@ -76,13 +75,13 @@ public class Jetpack implements Listener
                     if (p.getVelocity().getY() > 0)
                     {
 
-                        if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) == 100)
+                        if (Fuels.containsKey(e.getPlayer().getName()) && Fuels.get(e.getPlayer().getName()) == 100)
                         {
                             p.setAllowFlight(true);
 
                         }
                     }
-                }
+
             }
         }
     }
@@ -91,21 +90,21 @@ public class Jetpack implements Listener
     {
         Player p = e.getPlayer();
         if (p.getGameMode() == GameMode.SURVIVAL){
-            if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) == 100)
+            if (Fuels.containsKey(e.getPlayer().getName()) && Fuels.get(e.getPlayer().getName()) == 100)
             {
                 new BukkitRunnable()
                 {
                     @Override
                     public void run()
                     {
-                        Fuels.put((e.getPlayer().getDisplayName()),Fuels.get(e.getPlayer().getDisplayName()) - 10);;
+                        Fuels.put((e.getPlayer().getName()),Fuels.get(e.getPlayer().getName()) - 10);
                         p.setVelocity(p.getVelocity().add(new Vector(0, 0.5, 0)));
                         p.setVelocity(p.getLocation().getDirection().multiply(1.5));
                         if (!p.isFlying()) {p.setAllowFlight(true);p.setFlying(true);}
-                        new ActionBar(ChatColor.YELLOW + ChatColor.BOLD.toString() + new String(new char[(Integer)Fuels.get(e.getPlayer().getDisplayName()) / 5]).replace("\0", "▇")).sendToPlayer(p);
+                        new ActionBar(ChatColor.YELLOW + ChatColor.BOLD.toString() + new String(new char[Fuels.get(e.getPlayer().getName()) / 5]).replace("\0", "▇")).sendToPlayer(p);
                         p.getWorld().playEffect(p.getLocation().add(new Vector(0,1,0)) ,Effect.LAVA_POP,  0);
                         p.getWorld().playEffect(p.getLocation().add(new Vector(0,1,0)) ,Effect.LAVADRIP,  0);
-                        if ((Integer)Fuels.get(e.getPlayer().getDisplayName()) == 0)
+                        if (Fuels.get(e.getPlayer().getName()) == 0)
                         {
                             p.setAllowFlight(false);
                             p.setFlying(false);
@@ -132,15 +131,11 @@ public class Jetpack implements Listener
         Player p = (Player) e.getEntity();
         if (e.getCause() == EntityDamageEvent.DamageCause.FALL)
         {
-            ItemStack chest =p.getInventory().getChestplate();
-            if (chest.getType() != null && chest.getType() == Material.DIAMOND_CHESTPLATE)
+            if (p.getInventory().getChestplate() != null && p.getInventory().getChestplate() == UI.Jetpack)
             {
-                if (chest.hasItemMeta() &&
-                        chest.getItemMeta().hasDisplayName() &&
-                        chest.getItemMeta().getDisplayName().equals(ChatColor.BLUE + ChatColor.BOLD.toString() + "Jetpack")) {
 
-                    e.setCancelled(true);
-                }
+                e.setCancelled(true);
+
             }
         }
     }
