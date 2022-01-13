@@ -7,7 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 
@@ -17,15 +16,8 @@ public class Pogo implements Listener
     public void onPlayerInteract(PlayerInteractEvent e)
     {
         Player p = e.getPlayer();
-        ItemStack item = p.getInventory().getItemInHand();
 
-        if (item.getType() == Material.BLAZE_ROD)
-        {
-
-            if(item.hasItemMeta() &&
-                    item.getItemMeta().hasDisplayName() &&
-                    item.getItemMeta().getDisplayName().equals(ChatColor.GREEN + ChatColor.BOLD.toString() + "Pogo Stick"))
-
+        if (CheckItem.CheckItem(p.getInventory().getItemInHand(), Material.BLAZE_ROD, ChatColor.GREEN + ChatColor.BOLD.toString() + "Pogo Stick"))
             {
                 if (e.getAction() == Action.RIGHT_CLICK_BLOCK)
                 {
@@ -36,6 +28,6 @@ public class Pogo implements Listener
                     p.setVelocity(p.getEyeLocation().getDirection().multiply(30));
                 }
             }
-        }
+
     }
 }
