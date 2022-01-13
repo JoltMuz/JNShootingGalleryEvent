@@ -25,6 +25,8 @@ GrapplingHook - To grapple on the hook.
  
 Each item's class shows how the item works.
 
+UI class shows the Inventory UI opened when /joltitems command is issued. 
+
 ActionBar class is used to send action bars to player, is currently only used on Jetpack.
 
 Cooldown class is used to put cooldowns on items, is currently only used on wand (because cooldown is annoying).
