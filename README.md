@@ -10,7 +10,8 @@ Items - Abilities
  Bustercall - Very fireball fireball.
  BridgeEgg - to bridge to the egg.
  GrapplingHook - To grapple on the hook.
-  
+ 
+ 
 Each item's class shows how the item works.
 ActionBar class is used to send action bars to player, is currently only used on Jetpack.
 Cooldown class is used to put cooldowns on items, is currently only used on wand (because cooldown is annoying).
