@@ -1,4 +1,5 @@
 Items - Abilities
+
  Incinerator -  Flame throw 4 blocks ahead
  Wand - Lightning strike on target
  Pogo - Force up or forward
