@@ -1,15 +1,15 @@
 Items - Abilities
 
- Incinerator -  Flame throw 4 blocks ahead
- Wand - Lightning strike on target
- Pogo - Force up or forward
- Swifts - Speed boots 
- Jetpack - Sneak to recharge, triple space to fly. 
- Railgun - Lazer line gun.
- YonduFin - Controllablle arrow, returns back on hit.
- Bustercall - Very fireball fireball.
- BridgeEgg - to bridge to the egg.
- GrapplingHook - To grapple on the hook.
+Incinerator -  Flame throw 4 blocks ahead
+Wand - Lightning strike on target
+Pogo - Force up or forward
+Swifts - Speed boots 
+Jetpack - Sneak to recharge, triple space to fly. 
+Railgun - Lazer line gun
+YonduFin - Controllablle arrow, returns back on hit.
+Bustercall - Very fireball fireball.
+BridgeEgg - to bridge to the egg.
+GrapplingHook - To grapple on the hook.
  
  
 Each item's class shows how the item works.
