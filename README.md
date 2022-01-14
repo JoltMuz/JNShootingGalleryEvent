@@ -20,6 +20,8 @@ Bustercall - Very fireball fireball.
 BridgeEgg - to bridge to the egg.
 
 GrapplingHook - To grapple on the hook.
+
+Railgun - Shoot a beam of laser.
  
  
  
