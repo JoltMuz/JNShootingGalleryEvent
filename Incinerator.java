@@ -27,62 +27,61 @@ public class Incinerator implements Listener
             Player p = e.getPlayer();
             World w = p.getWorld();
             if(CheckItem.CheckItem(e.getPlayer().getItemInHand(), Material.DIAMOND_SWORD, ChatColor.GOLD + ChatColor.BOLD.toString() + "Incinerator"))
+            {
+                Location loc = p.getLocation();
+                Vector v1 = loc.getDirection().multiply(1);
+                Vector v2 = loc.getDirection().multiply(2);
+                Location l1 = loc.add(v2);
+                w.playEffect(l1, Effect.MOBSPAWNER_FLAMES, null);
+                w.playEffect(l1, Effect.MOBSPAWNER_FLAMES, null);
+                for (Entity en1 : l1.getChunk().getEntities())
                 {
-                    Location loc = p.getLocation();
-                    Vector v1 = loc.getDirection().multiply(1);
-                    Vector v2 = loc.getDirection().multiply(2);
-                    Location l1 = loc.add(v2);
-                    w.playEffect(l1, Effect.MOBSPAWNER_FLAMES, null);
-                    w.playEffect(l1, Effect.MOBSPAWNER_FLAMES, null);
-                    for (Entity en1 : l1.getChunk().getEntities())
+                    if (en1.getLocation().distance(l1) < 1)
                     {
-                        if (en1.getLocation().distance(l1) < 1)
-                        {
-                            en1.setFireTicks(100);
-                            Damageable d1 = (Damageable) en1;
-                            d1.damage(5);
-                        }
+                        en1.setFireTicks(100);
+                        Damageable d1 = (Damageable) en1;
+                        d1.damage(5);
+                    }
 
-                    }
-                    Location l2 = l1.add(v1);
-                    w.playEffect(l2, Effect.MOBSPAWNER_FLAMES, null);
-                    w.playEffect(l2, Effect.MOBSPAWNER_FLAMES, null);
-                    for (Entity en2 : l2.getChunk().getEntities())
+                }
+                Location l2 = l1.add(v1);
+                w.playEffect(l2, Effect.MOBSPAWNER_FLAMES, null);
+                w.playEffect(l2, Effect.MOBSPAWNER_FLAMES, null);
+                for (Entity en2 : l2.getChunk().getEntities())
+                {
+                    if (en2.getLocation().distance(l2) < 1)
                     {
-                        if (en2.getLocation().distance(l2) < 1)
-                        {
-                            en2.setFireTicks(100);
-                            Damageable d2 = (Damageable) en2;
-                            d2.damage(5);
-                        }
+                        en2.setFireTicks(100);
+                        Damageable d2 = (Damageable) en2;
+                        d2.damage(5);
+                    }
 
-                    }
-                    Location l3 = l2.add(v1);
-                    w.playEffect(l3, Effect.MOBSPAWNER_FLAMES, null);
-                    w.playEffect(l3, Effect.MOBSPAWNER_FLAMES, null);
-                    for (Entity en3 : l3.getChunk().getEntities())
+                }
+                Location l3 = l2.add(v1);
+                w.playEffect(l3, Effect.MOBSPAWNER_FLAMES, null);
+                w.playEffect(l3, Effect.MOBSPAWNER_FLAMES, null);
+                for (Entity en3 : l3.getChunk().getEntities())
+                {
+                    if (en3.getLocation().distance(l3) < 1)
                     {
-                        if (en3.getLocation().distance(l3) < 1)
-                        {
-                            en3.setFireTicks(100);
-                            Damageable d3 = (Damageable) en3;
-                            d3.damage(5);
-                        }
+                        en3.setFireTicks(100);
+                        Damageable d3 = (Damageable) en3;
+                        d3.damage(5);
                     }
-                    Location l4 = l3.add(v1);
-                    w.playEffect(l4, Effect.MOBSPAWNER_FLAMES, null);
-                    w.playEffect(l4, Effect.MOBSPAWNER_FLAMES, null);
-                    for (Entity en4 : l4.getChunk().getEntities())
+                }
+                Location l4 = l3.add(v1);
+                w.playEffect(l4, Effect.MOBSPAWNER_FLAMES, null);
+                w.playEffect(l4, Effect.MOBSPAWNER_FLAMES, null);
+                for (Entity en4 : l4.getChunk().getEntities())
+                {
+                    if (en4.getLocation().distance(l4) < 1)
                     {
-                        if (en4.getLocation().distance(l4) < 1)
-                        {
-                            en4.setFireTicks(100);
-                            Damageable d4 = (Damageable) en4;
-                            d4.damage(5);
-                        }
+                        en4.setFireTicks(100);
+                        Damageable d4 = (Damageable) en4;
+                        d4.damage(5);
                     }
                 }
             }
         }
-
+    }
 }
